@@ -33,13 +33,22 @@
 
 
 function main(){
-    function Menu(...navList){
+    function Menu(navList, nameList){
         this.navList=navList;
-        this.wrapperA=function(){
-            return this.navList.map(elem=>`<a href='${elem}'>item</a>`);
-        }
+        this.nameList= nameList;
+
+
+        this.wrapperA = function() {
+        return this.navList.map(function(elem,i) {
+            console.log(this.nameList);
+            return `<a href='${elem}'>${this.nameList[i]}</a>`;
+        }.bind(this));
     }
-    let mainMenu=new Menu("home.html","services.html","price.html","about.html");
+
+    }
+    let mainMenu=new Menu(["home.html","services.html","price.html","about.html"],  ["Главная", "Сервис", "Прайс-лист", "О нас"]);
+
+
     for (elem of mainMenu.navList)
         console.log(elem);
         console.log(mainMenu.wrapperA());
