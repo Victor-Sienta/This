@@ -1,13 +1,20 @@
-function main(){
-    function Menu(navList, nameList){
+class Menu {
+    
+    constructor(navList, nameList) {
         this.navList=navList;
         this.nameList=nameList;
-        this.wrapperA=function() {
-            return this.navList.map(function(elem,i){
-                return `<a href='${elem}'>${this.nameList[i]}</a>`;
-            });
-        }
     }
+
+    wrapperA() {
+        return this.navList.map(function(elem,i) {
+            console.log(this.nameList);
+            return `<a href='${elem}'>${this.nameList[i]}</a>`;
+        });
+    }
+}
+
+function main(){
+
 
     a = ["home.html","services.html","price.html","about.html"]
     b = ["Главная", "Сервис", "Прайс-лист", "О нас"]
